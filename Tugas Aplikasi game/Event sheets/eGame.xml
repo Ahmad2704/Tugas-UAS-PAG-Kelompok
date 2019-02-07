@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>eGame</name>
+    <events>
+        <variable constant="0" name="highscore" sid="2112311858718924" static="0" type="number">0</variable>
+        <variable constant="0" name="score" sid="1224787494498246" static="0" type="number">0</variable>
+        <variable constant="0" name="speed" sid="2914347966325992" static="0" type="number">200</variable>
+        <event-block sid="5236899462264784">
+            <conditions>
+                <condition id="0" name="On any touch start" sid="3093293430501217" type="Touch" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="3205593497865558">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2089257134736471" type="System">
+                            <param id="0" name="Variable">speed</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="9" name="Set vector Y" sid="9066511666131486" type="planeRed">
+                            <param id="0" name="Vector Y">-500</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6884934971987597">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6546099066843242" type="System" />
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="208626937088022" type="groundGrass">
+                    <param id="0" name="X">Self.X - speed*dt</param>
+                </action>
+                <action id="-1" name="Set X" sid="14528554000608" type="rockGrass">
+                    <param id="0" name="X">Self.X - speed*dt</param>
+                </action>
+                <action id="-1" name="Set X" sid="8118821448129414" type="rockGrassDown">
+                    <param id="0" name="X">Self.X - speed*dt</param>
+                </action>
+                <action id="-1" name="Set X" sid="4816664062911033" type="starGold">
+                    <param id="0" name="X">Self.X - speed*dt</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6905440815039201">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="4770998031891702" type="groundGrass">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-800</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="687265556194013" type="groundGrass">
+                    <param id="0" name="X">800</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6225744035663456">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="861010515728707" type="rockGrass">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="516931760737897" type="rockGrass" />
+            </actions>
+        </event-block>
+        <event-block sid="1316600646287399">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="4342325712770487" type="rockGrassDown">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="6099341915586793" type="rockGrassDown" />
+            </actions>
+        </event-block>
+        <event-block sid="4193713414921908">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="8662109465664875" type="starGold">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="8949829316317783" type="starGold" />
+            </actions>
+        </event-block>
+        <event-block sid="2303403373339546">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="787195561300129" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5249256980374801" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="5267077249661385" type="System">
+                    <param id="0" name="Object to create">rockGrass</param>
+                    <param id="1" name="Layer">&quot;Rock&quot;</param>
+                    <param id="2" name="X">random(950,1000)</param>
+                    <param id="3" name="Y">random(360,440)</param>
+                </action>
+                <action id="-3" name="Create object" sid="1279770360122618" type="System">
+                    <param id="0" name="Object to create">rockGrassDown</param>
+                    <param id="1" name="Layer">&quot;Rock&quot;</param>
+                    <param id="2" name="X">random(800,830)</param>
+                    <param id="3" name="Y">random(20,100)</param>
+                </action>
+                <action id="-3" name="Create object" sid="264523575923419" type="System">
+                    <param id="0" name="Object to create">starGold</param>
+                    <param id="1" name="Layer">&quot;Plane&quot;</param>
+                    <param id="2" name="X">1100</param>
+                    <param id="3" name="Y">random(200,300)</param>
+                </action>
+                <action id="-3" name="Create object" sid="7708548945970007" type="System">
+                    <param id="0" name="Object to create">starGold</param>
+                    <param id="1" name="Layer">&quot;Plane&quot;</param>
+                    <param id="2" name="X">1200</param>
+                    <param id="3" name="Y">random(200,300)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="53067179887195">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="715291800469987" type="System">
+                    <param id="0" name="Interval (seconds)">0.2</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8565815523571216">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1252993677292319" type="System">
+                            <param id="0" name="Variable">speed</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="4608967129061196" type="planeRed">
+                            <param id="0" name="Object">puffLarge</param>
+                            <param id="1" name="Layer">&quot;Rock&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="4928805789505915" type="puffLarge">
+                            <param id="0" name="Frame number">choose(0,1)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4818812315853512">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="4245024031458301" type="planeRed">
+                    <param id="0" name="Object">starGold</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="2118641256415647" type="starGold" />
+                <action id="-10" name="Add to" sid="824776233640164" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" sid="3873201081832357" type="TextScore">
+                    <param id="0" name="Text">&quot;SCORE: &quot;&amp;score</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="7626916538190871">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="4579984170147251" type="planeRed">
+                    <param id="0" name="Object">rockGrass</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="6606746449249242" type="planeRed">
+                    <param id="0" name="Object">rockGrassDown</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="3342446091178188" type="planeRed">
+                    <param id="0" name="Object">groundGrass</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2752162277172784" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Rotate" id="0" name="Set speed" sid="3848521908091365" type="planeRed">
+                    <param id="0" name="Speed">200</param>
+                </action>
+                <action id="2" name="Stop" sid="5025210526843121" type="planeRed" />
+                <action id="-16" name="Wait" sid="3999290982688144" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="3830409573827735" type="System">
+                    <param id="0" name="Layer">&quot;Gameover&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="4635129726298727">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2971465901607706" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">highscore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="1254047600201694" type="System">
+                            <param id="0" name="Variable">highscore</param>
+                            <param id="1" name="Value">score</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2793602801692803">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="1874542485219872" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="1244189585953697" type="TextHighscore">
+                            <param id="0" name="Text">&quot;HIGHSCORE: &quot;&amp;highscore</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3890058175389424">
+            <conditions>
+                <condition id="0" name="On clicked" sid="30776539705096" type="ButtonRestart" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="7888631411322584" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="7259205326217131" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Value">200</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="3953216648180932" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="432178665453971">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="4241189324418501" type="System" />
+            </conditions>
+            <actions>
+                <action id="-4" name="Set layer visible" sid="7730819864527656" type="System">
+                    <param id="0" name="Layer">&quot;Gameover&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
